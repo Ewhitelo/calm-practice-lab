@@ -1,0 +1,939 @@
+<!doctype html><html><head><meta charset="utf-8"><title>Calm Practice Lab</title><meta name="description" content="Five short stress-management practices: breathing, muscle relaxation, body scan, grounding, and thought work. No sign-in needed."><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700&family=Literata:wght@400;600&display=swap">
+<style>
+/* Layout: one centered column. Header, two labeled groups of tabs, one practice panel at a time. */
+:root {
+  --font-display: "Literata", Georgia, "Times New Roman", serif;
+  --font-body: "Figtree", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --bg: #EDF3F1;
+  --surface: #FFFFFF;
+  --surface-2: #E1ECE9;
+  --fg: #14302E;
+  --muted: #4A6663;
+  --line: #C3D6D2;
+  --accent: #1B7A72;
+  --accent-fg: #FFFFFF;
+  --accent-soft: #CFE8E4;
+  --warm: #9A5A14; --warm-glow: #F08A1C;
+  --warm-soft: #F6E4CB;
+  --focus: #1459B3;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0E1B1D; --surface: #152629; --surface-2: #1C3135; --fg: #E2EFEC; --muted: #9DB8B4;
+    --line: #2B4549; --accent: #5CC7BB; --accent-fg: #06201D; --accent-soft: #1E4541;
+    --warm: #E8AE66; --warm-glow: #F4A94A; --warm-soft: #3A2D1A; --focus: #8DBBFF; color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #0E1B1D; --surface: #152629; --surface-2: #1C3135; --fg: #E2EFEC; --muted: #9DB8B4;
+  --line: #2B4549; --accent: #5CC7BB; --accent-fg: #06201D; --accent-soft: #1E4541;
+  --warm: #E8AE66; --warm-glow: #F4A94A; --warm-soft: #3A2D1A; --focus: #8DBBFF; color-scheme: dark;
+}
+* { box-sizing: border-box; }
+[hidden] { display: none !important; }
+body { background: var(--bg); color: var(--fg); font-family: var(--font-body); font-size: 1rem; line-height: 1.55; }
+.wrap { max-width: 56rem; margin: 0 auto; padding-inline: 1rem; padding-block: 1.75rem 3rem; min-width: 0; }
+h1, h2, h3 { font-family: var(--font-display); font-weight: 600; line-height: 1.2; margin: 0; text-wrap: balance; }
+h1 { font-size: clamp(1.9rem, 5vw, 2.6rem); }
+h2 { font-size: 1.6rem; }
+h3 { font-size: 1.15rem; }
+p { margin: 0; }
+button, input, select, textarea { font: inherit; color: inherit; }
+:focus-visible { outline: 3px solid var(--focus); outline-offset: 2px; }
+.eyebrow { font-size: .78rem; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); font-weight: 600; }
+.lede { color: var(--muted); max-width: 40rem; }
+
+header { display: flex; flex-direction: column; gap: .6rem; margin-bottom: 1.5rem; }
+
+/* tabs */
+.tabs { display: grid; grid-template-columns: 3fr 2fr; gap: 1rem 1.5rem; margin-bottom: 1.25rem; }
+.tabgroup { display: flex; flex-direction: column; gap: .5rem; min-width: 0; }
+.tabrow { display: flex; flex-wrap: wrap; gap: .5rem; }
+.tab { flex: 1 1 8rem; text-align: left; background: var(--surface); border: 1px solid var(--line); border-radius: 10px;
+  padding: .6rem .8rem; cursor: pointer; display: flex; flex-direction: column; min-height: 3.4rem; }
+.tab b { font-weight: 600; font-size: .95rem; }
+.tab small { color: var(--muted); font-size: .8rem; }
+.tab:hover { border-color: var(--accent); }
+.tab[aria-selected="true"] { background: var(--accent); border-color: var(--accent); color: var(--accent-fg); }
+.tab[aria-selected="true"] small { color: var(--accent-fg); opacity: .85; }
+@media (max-width: 40rem) { .tabs { grid-template-columns: 1fr; } }
+
+/* panels */
+.panel { background: var(--surface); border: 1px solid var(--line); border-radius: 16px; padding: clamp(1rem, 4vw, 1.75rem);
+  display: flex; flex-direction: column; gap: 1.25rem; min-width: 0; }
+.panel-head { display: flex; flex-direction: column; gap: .4rem; }
+details.why { font-size: .92rem; color: var(--muted); }
+details.why summary { cursor: pointer; color: var(--accent); font-weight: 600; width: fit-content; }
+details.why p { margin-top: .4rem; max-width: 42rem; }
+.stage { background: var(--surface-2); border-radius: 14px; padding: clamp(1rem, 4vw, 1.75rem); display: flex; flex-direction: column;
+  align-items: center; gap: 1rem; text-align: center; min-width: 0; }
+.controls { display: flex; flex-wrap: wrap; gap: .6rem; justify-content: center; }
+.btn { min-height: 2.75rem; padding: .55rem 1.2rem; border-radius: 999px; border: 1px solid var(--accent); background: transparent;
+  color: var(--accent); font-weight: 600; cursor: pointer; }
+.btn:hover { background: var(--accent-soft); }
+.btn.primary { background: var(--accent); color: var(--accent-fg); }
+.btn.primary:hover { filter: brightness(1.08); background: var(--accent); }
+.btn.quiet { border-color: var(--line); color: var(--fg); }
+.btn.small { min-height: 2.25rem; padding: .3rem .9rem; font-size: .9rem; }
+.btn:disabled { opacity: .5; cursor: not-allowed; }
+
+/* check-in */
+.checkin { display: flex; flex-direction: column; gap: .9rem; border: 1px solid var(--line); border-radius: 12px; padding: .9rem 1rem; }
+.ci-row { display: flex; flex-direction: column; gap: .35rem; }
+.ci-row label { font-weight: 600; font-size: .95rem; }
+.ci-ctl { display: flex; align-items: center; gap: .75rem; }
+.ci-ctl input[type=range], .range input[type=range] { flex: 1; min-width: 0; accent-color: var(--accent); }
+.ci-ctl output { font-variant-numeric: tabular-nums; font-weight: 700; min-width: 1.6rem; text-align: right; }
+.ci-ctl span { color: var(--muted); font-size: .9rem; }
+.ci-result { color: var(--accent); font-weight: 600; }
+
+/* breathing */
+.orb-box { position: relative; width: min(16rem, 70vw); aspect-ratio: 1; display: grid; place-items: center; }
+.orb-ring { position: absolute; inset: 0; border-radius: 50%; border: 2px dashed var(--line); }
+.orb { width: 100%; aspect-ratio: 1; border-radius: 50%; background: radial-gradient(circle at 35% 30%, var(--accent-soft), var(--accent));
+  transform: scale(.55); transition: transform var(--dur, 4s) ease-in-out; }
+.orb.idle { transform: scale(.7); }
+@media (prefers-reduced-motion: reduce) { .orb { transition: none; transform: scale(.8) !important; } }
+.phase { font-family: var(--font-display); font-size: 2rem; line-height: 1.1; }
+.cue { color: var(--muted); max-width: 28rem; }
+.meta { display: flex; flex-wrap: wrap; gap: .4rem 1.2rem; justify-content: center; color: var(--muted); font-variant-numeric: tabular-nums; font-size: .95rem; }
+.meta b { color: var(--fg); }
+.bar { width: 100%; max-width: 28rem; height: .5rem; border-radius: 99px; background: var(--line); overflow: hidden; }
+.bar > i { display: block; height: 100%; width: 0; background: var(--accent); transition: width .2s linear; }
+
+/* PMR */
+.pill { display: inline-block; padding: .2rem .9rem; border-radius: 999px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; font-size: .8rem;
+  background: var(--accent-soft); color: var(--accent); }
+.pill.tense { background: var(--warm-soft); color: var(--warm); }
+.ring { position: relative; width: 9rem; height: 9rem; }
+.ring svg { width: 100%; height: 100%; transform: rotate(-90deg); }
+.ring circle { fill: none; stroke-width: 8; }
+.ring .track { stroke: var(--line); }
+.ring .prog { stroke: var(--accent); stroke-linecap: round; transition: stroke-dashoffset .2s linear; }
+.ring.tense .prog { stroke: var(--warm); }
+.ring .num { position: absolute; inset: 0; display: grid; place-items: center; font-family: var(--font-display); font-size: 2.6rem; font-variant-numeric: tabular-nums; }
+.chips { display: flex; flex-wrap: wrap; gap: .4rem; justify-content: center; }
+.chip { font-size: .8rem; padding: .15rem .6rem; border-radius: 999px; border: 1px solid var(--line); color: var(--muted); background: var(--surface); }
+.chip.cur { border-color: var(--accent); color: var(--fg); font-weight: 700; }
+.chip.done { background: var(--accent-soft); color: var(--accent); border-color: transparent; }
+
+/* body scan */
+.scan-grid { display: grid; grid-template-columns: minmax(7rem, 11rem) 1fr; gap: 1.5rem; align-items: center; width: 100%; text-align: left; }
+.fig { width: 100%; max-height: 22rem; }
+.fig-body { fill: var(--surface); stroke: var(--line); stroke-width: 1.5; }
+.scan-text { display: flex; flex-direction: column; gap: .7rem; min-width: 0; }
+.opt-row { display: flex; flex-wrap: wrap; gap: .6rem 1.2rem; align-items: center; }
+.opt-row label { display: inline-flex; gap: .4rem; align-items: center; cursor: pointer; }
+.opt-row input { accent-color: var(--accent); width: 1.1rem; height: 1.1rem; }
+@media (max-width: 34rem) { .scan-grid { grid-template-columns: 1fr; text-align: center; } .fig { max-height: 14rem; } }
+
+/* forms */
+.steps { display: flex; flex-direction: column; gap: 1.1rem; }
+.step { display: grid; grid-template-columns: 2rem 1fr; gap: .2rem .8rem; min-width: 0; }
+.step .n { grid-row: 1 / span 3; width: 2rem; height: 2rem; border-radius: 50%; background: var(--accent-soft); color: var(--accent); font-weight: 700; display: grid; place-items: center; font-variant-numeric: tabular-nums; }
+.step label.q { font-weight: 600; }
+.step .hint { color: var(--muted); font-size: .9rem; }
+.step > div { min-width: 0; }
+@media (max-width: 30rem) { .step { grid-template-columns: 1fr; } .step .n { grid-row: auto; } }
+textarea, input[type=text] { width: 100%; background: var(--bg); border: 1px solid var(--line); border-radius: 10px; padding: .6rem .75rem; resize: vertical; }
+textarea { min-height: 4.5rem; }
+textarea::placeholder, input::placeholder { color: var(--muted); opacity: .8; }
+.two { display: grid; grid-template-columns: 1fr 1fr; gap: .8rem; }
+@media (max-width: 36rem) { .two { grid-template-columns: 1fr; } }
+.range { display: flex; align-items: center; gap: .75rem; }
+.range output { min-width: 2.4rem; text-align: right; font-weight: 700; font-variant-numeric: tabular-nums; }
+.traps { display: flex; flex-wrap: wrap; gap: .45rem; }
+.trap { position: relative; }
+.trap input { position: absolute; opacity: 0; pointer-events: none; }
+.trap span { display: inline-block; padding: .3rem .8rem; border: 1px solid var(--line); border-radius: 999px; cursor: pointer; font-size: .9rem; background: var(--bg); }
+.trap input:checked + span { background: var(--accent); border-color: var(--accent); color: var(--accent-fg); }
+.trap input:focus-visible + span { outline: 3px solid var(--focus); outline-offset: 2px; }
+.trap-def { min-height: 2.6rem; color: var(--muted); font-size: .92rem; margin-top: .5rem; }
+.starters { display: flex; flex-wrap: wrap; gap: .4rem; margin-top: .5rem; }
+.banner { background: var(--warm-soft); color: var(--warm); border-radius: 10px; padding: .55rem .85rem; font-size: .92rem; font-weight: 500; display: flex; flex-wrap: wrap; gap: .5rem 1rem; align-items: center; justify-content: space-between; }
+.progress-note { color: var(--muted); font-size: .92rem; font-variant-numeric: tabular-nums; }
+.summary { display: flex; flex-direction: column; gap: .6rem; }
+.summary textarea { min-height: 11rem; font-size: .92rem; }
+.shift { font-weight: 700; color: var(--accent); }
+
+/* reframing */
+.seg { display: flex; flex-wrap: wrap; gap: .5rem; }
+.card { border: 1px solid var(--line); border-radius: 12px; padding: 1rem; display: flex; flex-direction: column; gap: .8rem; }
+.thought { font-family: var(--font-display); font-size: 1.2rem; }
+.opts { display: flex; flex-direction: column; gap: .5rem; }
+.opt { text-align: left; width: 100%; border: 1px solid var(--line); border-radius: 10px; background: var(--bg); padding: .7rem .9rem; cursor: pointer; display: flex; flex-direction: column; gap: .3rem; }
+.opt:hover:not([disabled]) { border-color: var(--accent); }
+.opt[disabled] { cursor: default; }
+.opt .tag { font-size: .78rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; }
+.opt .why { font-size: .9rem; color: var(--muted); }
+.opt.best { background: var(--accent-soft); border-color: var(--accent); }
+.opt.best .tag { color: var(--accent); }
+.opt.other .tag { color: var(--warm); }
+.opt.picked { outline: 2px solid var(--fg); outline-offset: 1px; }
+.cardnav { display: flex; flex-wrap: wrap; gap: .6rem; align-items: center; justify-content: space-between; }
+.lens { display: flex; flex-direction: column; gap: .2rem; padding: .7rem .9rem; border-radius: 10px; background: var(--surface-2); }
+.lens b { font-family: var(--font-display); }
+.check { padding-left: 1.1rem; margin: 0; color: var(--muted); font-size: .92rem; display: flex; flex-direction: column; gap: .15rem; }
+hr.sep { border: 0; border-top: 1px solid var(--line); margin: 0; }
+
+footer { margin-top: 1.5rem; color: var(--muted); font-size: .88rem; display: flex; flex-direction: column; gap: .5rem; max-width: 44rem; }
+footer b { color: var(--fg); }
+.gnum { font-family: var(--font-display); font-size: 4.5rem; line-height: 1; color: var(--accent); }
+.dots { display: flex; flex-wrap: wrap; gap: .5rem; justify-content: center; min-height: 1.4rem; }
+.dots span { width: 1.3rem; height: 1.3rem; border-radius: 50%; border: 2px solid var(--accent); background: transparent; transition: background .2s; }
+.dots span.on { background: var(--accent); }
+footer.fine-wrap { margin-top: 1.25rem; align-items: center; max-width: none; text-align: center; }
+details.fine { font-size: .8rem; color: var(--muted); max-width: 30rem; }
+details.fine summary { cursor: pointer; width: fit-content; margin: 0 auto; padding: .35rem .6rem; border-radius: 8px; opacity: .85; }
+details.fine summary:hover { opacity: 1; text-decoration: underline; }
+details.fine p { margin-top: .4rem; }
+.big-cue { font-size: 1.15rem; color: var(--fg); }
+.scan-text.pmr-text { align-items: flex-start; }
+@media (max-width: 34rem) { .scan-text.pmr-text { align-items: center; } }
+#pmr-glows.pg-ready { opacity: .6; }
+#pmr-glows.pg-release { opacity: .75; }
+#pmr-glows.pg-tense { animation: pgpulse 1s ease-in-out infinite; }
+@keyframes pgpulse { 0%, 100% { opacity: .8; } 50% { opacity: 1; } }
+@media (prefers-reduced-motion: reduce) { #pmr-glows.pg-tense { animation: none; } }
+.sr { position: absolute; left: -9999px; }
+</style>
+
+<div class="wrap">
+  <header>
+    <h1>Calm Practice Lab</h1>
+    <p class="lede">Five short skills for stress. Calm your body first, then work with your thoughts. Each one takes a few minutes and runs right here in your browser.</p>
+  </header>
+
+  <nav class="tabs" role="tablist" aria-label="Practices">
+    <div class="tabgroup">
+      <span class="eyebrow">Calm your body</span>
+      <div class="tabrow">
+        <button class="tab" role="tab" id="t-breathe" data-tab="breathe" aria-controls="p-breathe"><b>30-second breathing</b><small>30 sec</small></button>
+        <button class="tab" role="tab" id="t-pmr" data-tab="pmr" aria-controls="p-pmr"><b>Muscle relaxation</b><small>about 3.5 min</small></button>
+        <button class="tab" role="tab" id="t-scan" data-tab="scan" aria-controls="p-scan"><b>Body scan</b><small>3 or 5 min</small></button>
+        <button class="tab" role="tab" id="t-ground" data-tab="ground" aria-controls="p-ground"><b>Grounding 5-4-3-2-1</b><small>2 to 3 min</small></button>
+      </div>
+    </div>
+    <div class="tabgroup">
+      <span class="eyebrow">Work with your thoughts</span>
+      <div class="tabrow">
+        <button class="tab" role="tab" id="t-restructure" data-tab="restructure" aria-controls="p-restructure"><b>Restructuring</b><small>about 10 min</small></button>
+        <button class="tab" role="tab" id="t-reframe" data-tab="reframe" aria-controls="p-reframe"><b>Reframing</b><small>about 5 min</small></button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- BREATHING -->
+  <section class="panel" id="p-breathe" role="tabpanel" aria-labelledby="t-breathe">
+    <div class="panel-head">
+      <h2>30-second breathing</h2>
+      <p class="lede">Three slow breaths. Breathe in for 4 seconds, out for 6. The longer exhale helps your body settle. Use it before an exam, a presentation, or a hard conversation.</p>
+      <details class="why"><summary>Why this works</summary><p>Slow breathing with a longer exhale is a common way to bring the body out of its stress response. It is one route to what Herbert Benson called the Relaxation Response. Results vary from person to person, and the skill improves with repetition.</p></details>
+    </div>
+    <div data-checkin="breathe"></div>
+    <div class="stage" aria-live="off">
+      <div class="orb-box"><div class="orb-ring"></div><div class="orb idle" id="orb"></div></div>
+      <div>
+        <div class="phase" id="b-phase">Ready when you are</div>
+        <p class="cue" id="b-cue">Sit comfortably with your feet on the floor. Relax your shoulders.</p>
+      </div>
+      <div class="meta"><span>Breath <b id="b-round">0 of 3</b></span><span>Phase <b id="b-sec">0</b>s</span><span>Time left <b id="b-left">30</b>s</span></div>
+      <div class="controls">
+        <button class="btn primary" id="b-start">Start</button>
+        <button class="btn" id="b-pause" hidden>Pause</button>
+        <button class="btn quiet" id="b-stop" hidden>Stop</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- PMR -->
+  <section class="panel" id="p-pmr" role="tabpanel" aria-labelledby="t-pmr" hidden>
+    <div class="panel-head">
+      <h2>Progressive muscle relaxation</h2>
+      <p class="lede">Each muscle group lights up on the body first, so you can get ready. Then tense it for 5 seconds and let go for 10. Notice the difference between tight and loose.</p>
+      <details class="why"><summary>Why this works</summary><p>Progressive muscle relaxation was developed by Edmund Jacobson. Learning to tell tension from relaxation makes it easier to catch stress in your body early. Tense gently, about 70 percent effort. Skip or only imagine tensing any area that is injured or painful.</p></details>
+    </div>
+    <div data-checkin="pmr"></div>
+    <div class="stage">
+      <div class="chips" id="pmr-chips" aria-label="Muscle groups"></div>
+      <div class="scan-grid">
+        <svg class="fig" viewBox="0 0 120 300" role="img" aria-label="Body outline. The muscle group to tense is highlighted.">
+          <defs>
+            <clipPath id="pmrClip"><circle cx="60" cy="26" r="18"/><rect x="54" y="40" width="12" height="16" rx="4"/><rect x="32" y="52" width="56" height="94" rx="22"/><rect x="14" y="58" width="15" height="92" rx="7.5"/><rect x="91" y="58" width="15" height="92" rx="7.5"/><rect x="36" y="138" width="22" height="150" rx="10"/><rect x="62" y="138" width="22" height="150" rx="10"/></clipPath>
+            <radialGradient id="glowW"><stop offset="0" style="stop-color:var(--warm-glow);stop-opacity:1"/><stop offset="1" style="stop-color:var(--warm-glow);stop-opacity:0"/></radialGradient>
+            <radialGradient id="glowA"><stop offset="0" style="stop-color:var(--accent);stop-opacity:.95"/><stop offset="1" style="stop-color:var(--accent);stop-opacity:0"/></radialGradient>
+          </defs>
+          <g class="fig-body"><circle cx="60" cy="26" r="18"/><rect x="54" y="40" width="12" height="16" rx="4"/><rect x="32" y="52" width="56" height="94" rx="22"/><rect x="14" y="58" width="15" height="92" rx="7.5"/><rect x="91" y="58" width="15" height="92" rx="7.5"/><rect x="36" y="138" width="22" height="150" rx="10"/><rect x="62" y="138" width="22" height="150" rx="10"/></g>
+          <g id="pmr-glows" clip-path="url(#pmrClip)"></g>
+        </svg>
+        <div class="scan-text pmr-text">
+          <span class="pill" id="pmr-pill">Get ready</span>
+          <h3 id="pmr-name">Hands and forearms</h3>
+          <p class="cue big-cue" id="pmr-cue" style="max-width:none">Press Start. Sit or lie down and let your hands rest.</p>
+          <div class="ring" id="pmr-ring"><svg viewBox="0 0 120 120" aria-hidden="true"><circle class="track" cx="60" cy="60" r="54"/><circle class="prog" id="pmr-prog" cx="60" cy="60" r="54" stroke-dasharray="339.3" stroke-dashoffset="0"/></svg><div class="num" id="pmr-num">3</div></div>
+          <p class="progress-note" id="pmr-next" aria-live="polite"></p>
+        </div>
+      </div>
+      <div class="bar" aria-hidden="true"><i id="pmr-bar"></i></div>
+      <div class="controls">
+        <button class="btn primary" id="pmr-start">Start</button>
+        <button class="btn" id="pmr-pause" hidden>Pause</button>
+        <button class="btn quiet" id="pmr-skip" hidden>Skip step</button>
+        <button class="btn quiet" id="pmr-stop" hidden>Stop</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- BODY SCAN -->
+  <section class="panel" id="p-scan" role="tabpanel" aria-labelledby="t-scan" hidden>
+    <div class="panel-head">
+      <h2>Body scan</h2>
+      <p class="lede">Move your attention slowly from your feet to the top of your head. You are not trying to change anything. Just notice warmth, pressure, tingling, tightness, or nothing at all.</p>
+      <details class="why"><summary>Why this works</summary><p>A body scan is a mindfulness practice that trains steady, non-judging attention to physical sensation. If your mind wanders, which it will, notice that and gently return to the area on the screen.</p></details>
+    </div>
+    <div data-checkin="scan"></div>
+    <div class="stage">
+      <div class="opt-row" role="radiogroup" aria-label="Length">
+        <span class="eyebrow">Length</span>
+        <label><input type="radio" name="scan-len" value="3" checked> 3 minutes</label>
+        <label><input type="radio" name="scan-len" value="5"> 5 minutes</label>
+      </div>
+      <div class="scan-grid">
+        <svg class="fig" viewBox="0 0 120 300" role="img" aria-label="Body outline. The area you are scanning glows.">
+          <defs>
+            <g id="figShapes"><circle cx="60" cy="26" r="18"/><rect x="54" y="40" width="12" height="16" rx="4"/><rect x="32" y="52" width="56" height="94" rx="22"/><rect x="14" y="58" width="15" height="92" rx="7.5"/><rect x="91" y="58" width="15" height="92" rx="7.5"/><rect x="36" y="138" width="22" height="150" rx="10"/><rect x="62" y="138" width="22" height="150" rx="10"/></g>
+            <clipPath id="figClip"><circle cx="60" cy="26" r="18"/><rect x="54" y="40" width="12" height="16" rx="4"/><rect x="32" y="52" width="56" height="94" rx="22"/><rect x="14" y="58" width="15" height="92" rx="7.5"/><rect x="91" y="58" width="15" height="92" rx="7.5"/><rect x="36" y="138" width="22" height="150" rx="10"/><rect x="62" y="138" width="22" height="150" rx="10"/></clipPath>
+            <radialGradient id="glow"><stop offset="0" style="stop-color:var(--accent);stop-opacity:.95"/><stop offset="1" style="stop-color:var(--accent);stop-opacity:0"/></radialGradient>
+          </defs>
+          <use href="#figShapes" class="fig-body"/>
+          <g clip-path="url(#figClip)" id="scan-glows"></g>
+        </svg>
+        <div class="scan-text">
+          <p class="eyebrow" id="scan-count">Ready</p>
+          <h3 id="scan-name">Feet and toes</h3>
+          <p id="scan-cue" class="cue" style="max-width:none">Choose a length, then press Start. Lie down or sit with your back supported. Let your eyes close or rest your gaze softly on the floor.</p>
+          <div class="bar" aria-hidden="true" style="max-width:none"><i id="scan-bar"></i></div>
+          <div class="meta" style="justify-content:flex-start"><span>Time left <b id="scan-left">3:00</b></span></div>
+        </div>
+      </div>
+      <div class="controls">
+        <button class="btn primary" id="scan-start">Start</button>
+        <button class="btn" id="scan-pause" hidden>Pause</button>
+        <button class="btn quiet" id="scan-skip" hidden>Next area</button>
+        <button class="btn quiet" id="scan-stop" hidden>Stop</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- GROUNDING -->
+  <section class="panel" id="p-ground" role="tabpanel" aria-labelledby="t-ground" hidden>
+    <div class="panel-head">
+      <h2>Grounding: 5-4-3-2-1</h2>
+      <p class="lede">When your mind is racing, bring your attention back to the room using your five senses. Name 5 things you can see, 4 you can feel, 3 you can hear, 2 you can smell, and 1 you can taste. Tap each time you notice one.</p>
+      <details class="why"><summary>Why this works</summary><p>Grounding techniques shift attention from worried thoughts to what is happening around you right now. Naming sensory details, out loud or silently, gives your mind a simple job and can lower the intensity of anxious feelings. Go at your own pace.</p></details>
+    </div>
+    <div data-checkin="ground"></div>
+    <div class="stage">
+      <span class="pill" id="g-pill">Ready</span>
+      <div class="gnum" id="g-num">5</div>
+      <div>
+        <h3 id="g-title">Name 5 things you can see</h3>
+        <p class="cue" id="g-cue">Sit comfortably and take a slow breath. Press Start when you are ready.</p>
+      </div>
+      <div class="dots" id="g-dots" aria-hidden="true"></div>
+      <p class="progress-note" id="g-count" aria-live="polite"></p>
+      <div class="controls">
+        <button class="btn primary" id="g-start">Start</button>
+        <button class="btn primary" id="g-tap" hidden>I noticed one</button>
+        <button class="btn" id="g-next" hidden>Next</button>
+        <button class="btn quiet" id="g-reset" hidden>Start over</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- RESTRUCTURING -->
+  <section class="panel" id="p-restructure" role="tabpanel" aria-labelledby="t-restructure" hidden>
+    <div class="panel-head">
+      <h2>Cognitive restructuring</h2>
+      <p class="lede">Test whether a stressful thought is accurate. You will write the thought down, weigh the evidence, spot thinking traps, and build a more balanced thought. Nothing you type is saved or sent anywhere.</p>
+      <details class="why"><summary>Why this works</summary><p>In cognitive-behavioral therapy, the way you interpret a situation shapes how you feel. A thought record, introduced by Aaron Beck's cognitive therapy tradition, slows that process down so you can check the thought against the facts. Restructuring asks: is this thought true? Reframing, in the next tab, asks: is there another useful way to look at it?</p></details>
+    </div>
+    <div class="banner" id="tr-banner"><span>Example loaded so you can see how it works. Edit it or clear it to use your own.</span><span class="controls"><button class="btn small" id="tr-clear">Clear and start mine</button><button class="btn small quiet" id="tr-example">Reload example</button></span></div>
+    <p class="progress-note" id="tr-progress" aria-live="polite"></p>
+    <div class="steps">
+      <div class="step"><span class="n">1</span><div><label class="q" for="tr-situation">What happened?</label><p class="hint">Facts only: where, when, who. Skip the interpretation for now.</p><textarea id="tr-situation" rows="2"></textarea></div></div>
+      <div class="step"><span class="n">2</span><div><label class="q" for="tr-thought">What went through your mind?</label><p class="hint">Write the automatic thought as you heard it in your head.</p><textarea id="tr-thought" rows="2"></textarea></div></div>
+      <div class="step"><span class="n">3</span><div><label class="q" for="tr-feel">What did you feel, and how strongly?</label>
+        <input type="text" id="tr-feel" placeholder="Anxious, ashamed, angry...">
+        <div class="range" style="margin-top:.6rem"><input type="range" id="tr-before" min="0" max="100" value="80" aria-label="Feeling intensity before, 0 to 100"><output id="tr-before-o">80</output><span class="hint">/ 100</span></div></div></div>
+      <div class="step"><span class="n">4</span><div><span class="q">Weigh the evidence</span>
+        <div class="two" style="margin-top:.4rem">
+          <div><label class="hint" for="tr-for">Evidence that supports the thought</label><textarea id="tr-for" rows="3"></textarea></div>
+          <div><label class="hint" for="tr-against">Evidence that does not support it</label><textarea id="tr-against" rows="3"></textarea></div>
+        </div></div></div>
+      <div class="step"><span class="n">5</span><div><span class="q" id="trap-q">Any thinking traps?</span><p class="hint">Tap any that fit. Tap again to remove.</p>
+        <div class="traps" id="traps" role="group" aria-labelledby="trap-q"></div>
+        <p class="trap-def" id="trap-def" aria-live="polite">Select a trap to see what it means.</p></div></div>
+      <div class="step"><span class="n">6</span><div><label class="q" for="tr-balanced">Write a more balanced thought</label><p class="hint">It should be believable, specific, and use all of the evidence. It does not have to be cheerful.</p>
+        <textarea id="tr-balanced" rows="3"></textarea>
+        <div class="starters" id="tr-starters"></div>
+        <div class="range" style="margin-top:.8rem"><label class="hint" for="tr-after" style="flex:none">Feeling now</label><input type="range" id="tr-after" min="0" max="100" value="45"><output id="tr-after-o">45</output><span class="hint">/ 100</span></div></div></div>
+    </div>
+    <div class="controls" style="justify-content:flex-start"><button class="btn primary" id="tr-build">Build my thought record</button></div>
+    <div class="summary" id="tr-summary" hidden>
+      <p class="shift" id="tr-shift" aria-live="polite"></p>
+      <label class="sr" for="tr-out">Thought record summary</label>
+      <textarea id="tr-out" readonly></textarea>
+      <div class="controls" style="justify-content:flex-start"><button class="btn" id="tr-copy">Copy summary</button><span class="progress-note" id="tr-copied" aria-live="polite"></span></div>
+    </div>
+  </section>
+
+  <!-- REFRAMING -->
+  <section class="panel" id="p-reframe" role="tabpanel" aria-labelledby="t-reframe" hidden>
+    <div class="panel-head">
+      <h2>Cognitive reframing</h2>
+      <p class="lede">Reframing looks at a real situation from a more useful angle. First practice spotting good reframes. Then try one on a stressor of your own.</p>
+      <details class="why"><summary>Why this works</summary><p>The same event can mean different things depending on the frame around it. A good reframe does not deny the problem. It adds perspective that makes the next step clearer. The practice cards show the difference between a balanced reframe and forced positivity.</p></details>
+    </div>
+
+    <h3>Part 1. Spot the reframe</h3>
+    <div class="card" id="rf-card">
+      <div class="cardnav"><span class="eyebrow" id="rf-count">Scenario 1 of 5</span><span class="progress-note" id="rf-score" aria-live="polite"></span></div>
+      <p class="thought" id="rf-thought"></p>
+      <p class="hint progress-note">Which response is the most balanced reframe?</p>
+      <div class="opts" id="rf-opts"></div>
+      <div class="cardnav">
+        <button class="btn small quiet" id="rf-prev">Previous</button>
+        <button class="btn small" id="rf-next">Next scenario</button>
+      </div>
+    </div>
+
+    <hr class="sep">
+    <h3>Part 2. Reframe your own</h3>
+    <div class="steps">
+      <div class="step"><span class="n">1</span><div><label class="q" for="rf-own">What is the stressful thought?</label><textarea id="rf-own" rows="2" placeholder="Example: I have three deadlines this week and I can't handle it."></textarea></div></div>
+      <div class="step"><span class="n">2</span><div><span class="q" id="lens-q">Pick a lens</span>
+        <div class="seg" id="lens-seg" role="group" aria-labelledby="lens-q" style="margin-top:.4rem"></div>
+        <div class="lens" id="lens-box" style="margin-top:.6rem"></div></div></div>
+      <div class="step"><span class="n">3</span><div><label class="q" for="rf-new">Write your reframe</label>
+        <textarea id="rf-new" rows="3"></textarea>
+        <div class="starters"><button class="btn small quiet" id="rf-starter">Add the starter phrase</button></div></div></div>
+      <div class="step"><span class="n">4</span><div><span class="q">Check your reframe</span>
+        <ul class="check"><li>Is it believable to me, not just nice to hear?</li><li>Does it fit the facts of the situation?</li><li>Does it point to something I can do next?</li></ul></div></div>
+    </div>
+    <div class="controls" style="justify-content:flex-start"><button class="btn" id="rf-copy">Copy thought and reframe</button><span class="progress-note" id="rf-copied" aria-live="polite"></span></div>
+  </section>
+
+  <footer class="fine-wrap"><details class="fine"><summary>Educational practice tool</summary><p>These exercises build stress-management skills. They are not therapy, diagnosis, or medical advice. Stop any exercise that causes pain or distress.</p></details></footer>
+</div>
+
+<script>
+(function () {
+  var $ = function (s, r) { return (r || document).querySelector(s); };
+  var $$ = function (s, r) { return Array.prototype.slice.call((r || document).querySelectorAll(s)); };
+  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var runners = [];
+
+  /* ---------- session engine ---------- */
+  function createSession(steps, h) {
+    var total = 0, prefix = [];
+    steps.forEach(function (s) { prefix.push(total); total += s.secs; });
+    var i = 0, left = 0, timer = null, last = 0, finished = false;
+    function elapsed() { return prefix[i] + (steps[i].secs - left); }
+    function enter() { left = steps[i].secs; h.onStep(steps[i], i, steps.length); report(); }
+    function report() { h.onTick({ left: Math.max(left, 0), step: steps[i], i: i, count: steps.length, total: total, elapsed: elapsed() }); }
+    function tick(dt) {
+      left -= dt;
+      if (left <= 0) {
+        i++;
+        if (i >= steps.length) { finished = true; stop(); h.onDone(); return; }
+        enter();
+      } else { report(); }
+    }
+    function go() { last = performance.now(); timer = setInterval(function () { var n = performance.now(); var dt = (n - last) / 1000; last = n; tick(dt); }, 100); }
+    function stop() { if (timer) { clearInterval(timer); timer = null; } }
+    return {
+      start: function () { i = 0; enter(); go(); },
+      pause: function () { stop(); },
+      resume: function () { if (!finished) go(); },
+      skip: function () { left = 0; if (timer) { last = performance.now(); } tick(0); },
+      stop: stop
+    };
+  }
+
+  function runner(p, getSteps, view) {
+    var startB = $('#' + p + '-start'), pauseB = $('#' + p + '-pause'), stopB = $('#' + p + '-stop'), skipB = $('#' + p + '-skip');
+    var s = null, state = 'idle';
+    function ui() {
+      startB.hidden = !(state === 'idle' || state === 'done');
+      startB.textContent = state === 'done' ? 'Practice again' : 'Start';
+      var live = state === 'running' || state === 'paused';
+      pauseB.hidden = !live; stopB.hidden = !live; if (skipB) skipB.hidden = !live;
+      pauseB.textContent = state === 'paused' ? 'Resume' : 'Pause';
+      if (view.lock) view.lock(live);
+    }
+    startB.addEventListener('click', function () {
+      if (s) s.stop();
+      view.reset();
+      s = createSession(getSteps(), { onStep: view.onStep, onTick: view.onTick, onDone: function () { state = 'done'; ui(); view.onDone(); } });
+      state = 'running'; ui(); s.start();
+    });
+    pauseB.addEventListener('click', function () {
+      if (state === 'running') { s.pause(); state = 'paused'; } else if (state === 'paused') { s.resume(); state = 'running'; }
+      ui();
+    });
+    stopB.addEventListener('click', halt);
+    if (skipB) skipB.addEventListener('click', function () { if (s && state === 'running') s.skip(); });
+    function halt() { if (state === 'idle' || state === 'done') return; if (s) s.stop(); s = null; state = 'idle'; ui(); view.reset(); }
+    var r = { halt: halt };
+    runners.push(r);
+    ui();
+    return r;
+  }
+
+  /* ---------- check-in ---------- */
+  function makeCheckin(host) {
+    var id = 'ci-' + host.getAttribute('data-checkin');
+    host.innerHTML =
+      '<div class="checkin">' +
+      '<div class="ci-row"><label for="' + id + '-b">Before you begin: how tense does your body feel?</label>' +
+      '<div class="ci-ctl"><input type="range" id="' + id + '-b" min="0" max="10" value="5"><output id="' + id + '-bo">5</output><span>/ 10</span></div></div>' +
+      '<div class="ci-row" id="' + id + '-arow" hidden><label for="' + id + '-a">And how tense do you feel now?</label>' +
+      '<div class="ci-ctl"><input type="range" id="' + id + '-a" min="0" max="10" value="5"><output id="' + id + '-ao">5</output><span>/ 10</span></div>' +
+      '<p class="ci-result" id="' + id + '-res" aria-live="polite"></p></div></div>';
+    var b = $('#' + id + '-b'), a = $('#' + id + '-a'), res = $('#' + id + '-res');
+    function show() {
+      $('#' + id + '-bo').textContent = b.value; $('#' + id + '-ao').textContent = a.value;
+      var d = +b.value - +a.value, msg;
+      if (d > 0) msg = 'Tension went from ' + b.value + ' to ' + a.value + ', down ' + d + (d === 1 ? ' point.' : ' points.') + ' Notice what helped.';
+      else if (d === 0) msg = 'Tension stayed at ' + a.value + '. That is useful information. These skills get stronger with repetition.';
+      else msg = 'Tension rose a little. Some people notice their tension more once they slow down. Try again, or try another practice.';
+      res.textContent = msg;
+    }
+    b.addEventListener('input', show); a.addEventListener('input', show);
+    show();
+    return {
+      reveal: function () { a.value = b.value; show(); res.textContent = ''; $('#' + id + '-arow').hidden = false; },
+      hide: function () { $('#' + id + '-arow').hidden = true; }
+    };
+  }
+  var checkins = {};
+  $$('[data-checkin]').forEach(function (h) { checkins[h.getAttribute('data-checkin')] = makeCheckin(h); });
+
+  /* ---------- tabs ---------- */
+  var tabs = $$('[role=tab]'), panels = $$('[role=tabpanel]');
+  function showTab(name) {
+    if (!$('#p-' + name)) name = 'breathe';
+    runners.forEach(function (r) { r.halt(); });
+    tabs.forEach(function (t) { var on = t.dataset.tab === name; t.setAttribute('aria-selected', on ? 'true' : 'false'); t.tabIndex = on ? 0 : -1; });
+    panels.forEach(function (p) { p.hidden = p.id !== 'p-' + name; });
+    try { history.replaceState(null, '', '#' + name); } catch (e) {}
+  }
+  tabs.forEach(function (t, idx) {
+    t.addEventListener('click', function () { showTab(t.dataset.tab); });
+    t.addEventListener('keydown', function (e) {
+      var n = null;
+      if (e.key === 'ArrowRight') n = tabs[(idx + 1) % tabs.length];
+      if (e.key === 'ArrowLeft') n = tabs[(idx - 1 + tabs.length) % tabs.length];
+      if (n) { e.preventDefault(); n.focus(); showTab(n.dataset.tab); }
+    });
+  });
+
+  /* ---------- breathing ---------- */
+  var orb = $('#orb');
+  function breathSteps() {
+    var s = [];
+    for (var r = 1; r <= 3; r++) {
+      s.push({ kind: 'in', round: r, secs: 4, label: 'Breathe in', cue: 'Slowly through your nose. Let your belly rise.' });
+      s.push({ kind: 'out', round: r, secs: 6, label: 'Breathe out', cue: 'Slowly through your mouth, like fogging a mirror.' });
+    }
+    return s;
+  }
+  var breathView = {
+    reset: function () {
+      orb.className = 'orb idle'; orb.style.removeProperty('--dur');
+      $('#b-phase').textContent = 'Ready when you are';
+      $('#b-cue').textContent = 'Sit comfortably with your feet on the floor. Relax your shoulders.';
+      $('#b-round').textContent = '0 of 3'; $('#b-sec').textContent = '0'; $('#b-left').textContent = '30';
+      checkins.breathe.hide();
+    },
+    onStep: function (s) {
+      $('#b-phase').textContent = s.label; $('#b-cue').textContent = s.cue; $('#b-round').textContent = s.round + ' of 3';
+      orb.classList.remove('idle');
+      if (!reduce) {
+        orb.style.setProperty('--dur', s.secs + 's');
+        void orb.offsetWidth;
+        orb.style.transform = s.kind === 'in' ? 'scale(1)' : 'scale(.55)';
+      }
+    },
+    onTick: function (t) { $('#b-sec').textContent = Math.ceil(t.left); $('#b-left').textContent = Math.max(0, Math.ceil(t.total - t.elapsed)); },
+    onDone: function () {
+      $('#b-phase').textContent = 'Nicely done'; $('#b-cue').textContent = 'Notice how your body feels. Rate your tension below.';
+      $('#b-left').textContent = '0'; $('#b-sec').textContent = '0'; checkins.breathe.reveal();
+      if (!reduce) { orb.style.transform = 'scale(.7)'; }
+    }
+  };
+  var breathReset = breathView.reset;
+  breathView.reset = function () { orb.style.transform = ''; breathReset(); };
+  runner('b', breathSteps, breathView);
+
+  /* ---------- PMR ---------- */
+  var groups = [
+    ['Hands and forearms', 'Make tight fists and gently pull your wrists back.', [[23, 125, 28], [97, 125, 28]]],
+    ['Upper arms', 'Bend your elbows and flex your biceps.', [[22, 78, 24], [98, 78, 24]]],
+    ['Forehead', 'Raise your eyebrows as high as they will go.', [[60, 12, 15]]],
+    ['Eyes and cheeks', 'Squeeze your eyes shut and scrunch your nose.', [[60, 25, 15]]],
+    ['Jaw and lips', 'Press your lips together and your tongue to the roof of your mouth. Do not clench hard.', [[60, 38, 12]]],
+    ['Neck and shoulders', 'Lift your shoulders toward your ears.', [[60, 48, 12], [38, 62, 17], [82, 62, 17]]],
+    ['Chest and upper back', 'Take a breath in and pull your shoulder blades together.', [[60, 82, 30]]],
+    ['Stomach', 'Tighten your stomach as if you were bracing for a light tap.', [[60, 118, 28]]],
+    ['Hips and thighs', 'Press your knees together and squeeze your thighs and seat.', [[60, 150, 30], [48, 185, 22], [72, 185, 22]]],
+    ['Calves and feet', 'Gently point your toes away from you. If a calf cramps, ease off right away.', [[48, 240, 24], [72, 240, 24], [48, 272, 20], [72, 272, 20]]]
+  ];
+  var chipBox = $('#pmr-chips');
+  chipBox.innerHTML = groups.map(function (g, i) { return '<span class="chip" data-g="' + i + '">' + g[0] + '</span>'; }).join('');
+  function pmrSteps() {
+    var s = [{ kind: 'intro', secs: 10, g: -1, name: 'Get comfortable', glows: [], cue: 'Sit or lie down and let your hands rest. Breathe normally. Tense gently, at about 70 percent effort.' }];
+    groups.forEach(function (g, i) {
+      var nxt = i < groups.length - 1 ? groups[i + 1][0] : '';
+      s.push({ kind: 'ready', secs: 4, g: i, name: g[0], glows: g[2], cue: 'Get ready to tense: ' + g[1] });
+      s.push({ kind: 'tense', secs: 5, g: i, name: g[0], glows: g[2], cue: g[1] });
+      s.push({ kind: 'release', secs: 10, g: i, name: g[0], glows: g[2], next: nxt, cue: 'Let go completely. Notice the warmth and heaviness as the muscles soften.' });
+    });
+    s.push({ kind: 'end', secs: 10, g: 99, name: 'Whole body', glows: [[60, 150, 140]], cue: 'Scan from head to toe. Breathe slowly. Rest here until the timer ends.' });
+    return s;
+  }
+  var CIRC = 339.3;
+  function drawPmr(list, kind) {
+    var warm = kind === 'ready' || kind === 'tense';
+    var g = $('#pmr-glows');
+    g.setAttribute('class', 'pg-' + kind);
+    g.innerHTML = list.map(function (c) { return '<circle cx="' + c[0] + '" cy="' + c[1] + '" r="' + c[2] + '" fill="url(#' + (warm ? 'glowW' : 'glowA') + ')"/>'; }).join('');
+  }
+  var pmrView = {
+    reset: function () {
+      drawPmr([], 'idle'); $('#pmr-next').textContent = '';
+      $('#pmr-pill').textContent = 'Get ready'; $('#pmr-pill').className = 'pill';
+      $('#pmr-ring').className = 'ring'; $('#pmr-num').textContent = '3'; $('#pmr-prog').style.strokeDashoffset = 0;
+      $('#pmr-name').textContent = 'Hands and forearms'; $('#pmr-cue').textContent = 'Press Start. Sit or lie down and let your hands rest.';
+      $('#pmr-bar').style.width = '0'; $$('.chip', chipBox).forEach(function (c) { c.className = 'chip'; });
+      checkins.pmr.hide();
+    },
+    onStep: function (s) {
+      var warm = s.kind === 'tense' || s.kind === 'ready';
+      $('#pmr-pill').textContent = { intro: 'Settle in', ready: 'Get ready', tense: 'Tense now', release: 'Release', end: 'Rest' }[s.kind];
+      $('#pmr-pill').className = 'pill' + (warm ? ' tense' : '');
+      $('#pmr-ring').className = 'ring' + (warm ? ' tense' : '');
+      $('#pmr-name').textContent = s.name; $('#pmr-cue').textContent = s.cue;
+      $('#pmr-next').textContent = s.next ? 'Up next: ' + s.next : '';
+      drawPmr(s.glows, s.kind);
+      $$('.chip', chipBox).forEach(function (c) {
+        var gi = +c.getAttribute('data-g');
+        c.className = 'chip' + (gi === s.g ? ' cur' : (gi < s.g ? ' done' : ''));
+      });
+    },
+    onTick: function (t) {
+      $('#pmr-num').textContent = Math.ceil(t.left);
+      $('#pmr-prog').style.strokeDashoffset = (CIRC * (1 - t.left / t.step.secs)).toFixed(1);
+      $('#pmr-bar').style.width = (100 * t.elapsed / t.total).toFixed(1) + '%';
+    },
+    onDone: function () {
+      drawPmr([], 'idle'); $('#pmr-next').textContent = '';
+      $('#pmr-pill').textContent = 'Complete'; $('#pmr-pill').className = 'pill'; $('#pmr-ring').className = 'ring';
+      $('#pmr-num').textContent = '0'; $('#pmr-name').textContent = 'Well done'; $('#pmr-cue').textContent = 'Take one more slow breath, then rate your tension below.';
+      $('#pmr-bar').style.width = '100%'; $$('.chip', chipBox).forEach(function (c) { c.className = 'chip done'; });
+      checkins.pmr.reveal();
+    }
+  };
+  runner('pmr', pmrSteps, pmrView);
+
+  /* ---------- body scan ---------- */
+  var regions = [
+    ['Feet and toes', [[48, 272, 22], [72, 272, 22]], 'Notice your toes, the soles, the tops of your feet. Warmth, coolness, pressure from socks or the floor, or nothing at all.'],
+    ['Lower legs', [[48, 235, 24], [72, 235, 24]], 'Shins, calves, and ankles. Notice where they touch the chair, bed, or floor.'],
+    ['Thighs and knees', [[48, 180, 26], [72, 180, 26]], 'Feel the weight of your legs. Let them be heavy.'],
+    ['Hips and pelvis', [[60, 148, 34]], 'Notice the contact with the surface under you. Let it hold your weight.'],
+    ['Belly', [[60, 118, 30]], 'Feel your belly rise and fall with each breath. There is no need to change your breathing.'],
+    ['Chest and upper back', [[60, 82, 32]], 'Notice your heartbeat or the movement of your ribs. Let your chest feel open.'],
+    ['Hands and arms', [[23, 110, 30], [97, 110, 30]], 'Fingers, palms, wrists, forearms, and upper arms. Notice tingling or warmth.'],
+    ['Shoulders', [[40, 62, 20], [80, 62, 20]], 'Many people hold stress here. Let your shoulders drop, even a little.'],
+    ['Neck and throat', [[60, 48, 14]], 'Notice the back of your neck and your throat. Let them soften.'],
+    ['Jaw and face', [[60, 28, 22]], 'Unclench your teeth. Soften your cheeks, eyes, and the space between your eyebrows.'],
+    ['Top of the head', [[60, 14, 16]], 'Notice your scalp and the crown of your head. Let any tightness fade.']
+  ];
+  function scanSteps() {
+    var len = +($('input[name=scan-len]:checked').value);
+    var per = len === 5 ? 24 : 13;
+    var s = [{ kind: 'intro', secs: 10, name: 'Settle in', glows: [], cue: 'Lie down or sit with your back supported. Let your eyes close or rest your gaze softly. Take two slow breaths.' }];
+    regions.forEach(function (r, i) { s.push({ kind: 'region', secs: per, idx: i, name: r[0], glows: r[1], cue: r[2] + ' If your mind wanders, gently return.' }); });
+    s.push({ kind: 'end', secs: len === 5 ? 20 : 12, name: 'Whole body', glows: [[60, 150, 140]], cue: 'Feel your whole body at once, breathing. When you are ready, wiggle your fingers and toes.' });
+    return s;
+  }
+  function fmt(sec) { sec = Math.max(0, Math.ceil(sec)); var m = Math.floor(sec / 60), r = sec % 60; return m + ':' + (r < 10 ? '0' : '') + r; }
+  function drawGlows(list) {
+    $('#scan-glows').innerHTML = list.map(function (g) { return '<circle cx="' + g[0] + '" cy="' + g[1] + '" r="' + g[2] + '" fill="url(#glow)"/>'; }).join('');
+  }
+  var scanView = {
+    reset: function () {
+      drawGlows([]); $('#scan-count').textContent = 'Ready'; $('#scan-name').textContent = 'Feet and toes';
+      $('#scan-cue').textContent = 'Choose a length, then press Start. Lie down or sit with your back supported. Let your eyes close or rest your gaze softly on the floor.';
+      $('#scan-bar').style.width = '0'; $('#scan-left').textContent = ($('input[name=scan-len]:checked').value) + ':00';
+      checkins.scan.hide();
+    },
+    lock: function (on) { $$('input[name=scan-len]').forEach(function (r) { r.disabled = on; }); },
+    onStep: function (s) {
+      $('#scan-count').textContent = s.kind === 'region' ? 'Area ' + (s.idx + 1) + ' of ' + regions.length : (s.kind === 'intro' ? 'Getting settled' : 'Closing');
+      $('#scan-name').textContent = s.name; $('#scan-cue').textContent = s.cue; drawGlows(s.glows);
+    },
+    onTick: function (t) { $('#scan-bar').style.width = (100 * t.elapsed / t.total).toFixed(1) + '%'; $('#scan-left').textContent = fmt(t.total - t.elapsed); },
+    onDone: function () {
+      $('#scan-count').textContent = 'Complete'; $('#scan-name').textContent = 'Well done';
+      $('#scan-cue').textContent = 'Rate your tension below. Come back to this practice any time you want a pause.';
+      $('#scan-bar').style.width = '100%'; $('#scan-left').textContent = '0:00'; drawGlows([]); checkins.scan.reveal();
+    }
+  };
+  $$('input[name=scan-len]').forEach(function (r) { r.addEventListener('change', function () { $('#scan-left').textContent = r.value + ':00'; }); });
+  runner('scan', scanSteps, scanView);
+
+  /* ---------- cognitive restructuring ---------- */
+  var traps = [
+    ['All-or-nothing thinking', 'Seeing things in black and white. If it was not perfect, it was a failure.'],
+    ['Catastrophizing', 'Jumping to the worst possible outcome and treating it as likely.'],
+    ['Fortune telling', 'Predicting the future as if it were already known.'],
+    ['Mind reading', 'Assuming you know what others think, usually something negative about you.'],
+    ['Emotional reasoning', 'Treating a feeling as proof. "I feel like a failure, so I must be one."'],
+    ['Overgeneralizing', 'Turning one event into a rule. Watch for "always" and "never".'],
+    ['Personalizing', 'Taking blame for things that have many causes, or only partly involve you.'],
+    ['Should statements', 'Rigid rules about how you or others must act, which breed guilt and frustration.'],
+    ['Mental filter', 'Focusing on one negative detail and discounting everything that went well.']
+  ];
+  var trapBox = $('#traps');
+  trapBox.innerHTML = traps.map(function (t, i) { return '<label class="trap"><input type="checkbox" value="' + i + '"><span>' + t[0] + '</span></label>'; }).join('');
+  $$('input', trapBox).forEach(function (c) {
+    function def() { $('#trap-def').textContent = traps[+c.value][0] + ': ' + traps[+c.value][1]; }
+    c.addEventListener('change', function () { def(); updateProgress(); });
+    c.addEventListener('focus', def);
+    c.parentNode.addEventListener('mouseenter', def);
+  });
+  var starters = ['One low result is a signal, not proof that...', 'Even though..., it is also true that...', 'A more likely outcome is...', 'What I can do next is...'];
+  $('#tr-starters').innerHTML = starters.map(function (s, i) { return '<button type="button" class="btn small quiet" data-s="' + i + '">' + s + '</button>'; }).join('');
+  $$('#tr-starters button').forEach(function (b) {
+    b.addEventListener('click', function () {
+      var ta = $('#tr-balanced'), s = starters[+b.getAttribute('data-s')];
+      ta.value = ta.value ? ta.value + ' ' + s + ' ' : s + ' '; ta.focus(); updateProgress();
+    });
+  });
+  var example = {
+    situation: 'I got 62% on my first Research Methods quiz.',
+    thought: "I'm going to fail this class and everyone will see that I don't belong here.",
+    feel: 'Anxious and embarrassed', before: 80,
+    forr: 'The score was lower than I wanted. I felt lost during the statistics questions.',
+    against: 'It was one quiz worth 5% of the grade. I have not been to office hours yet. I did well on last week\'s reading check. Nobody else has seen my score.',
+    traps: [1, 2, 3],
+    balanced: 'One low quiz is a signal to adjust, not proof that I will fail. I can go to office hours this week and redo the practice problems on statistics.',
+    after: 45
+  };
+  function setForm(d) {
+    $('#tr-situation').value = d.situation; $('#tr-thought').value = d.thought; $('#tr-feel').value = d.feel;
+    $('#tr-before').value = d.before; $('#tr-for').value = d.forr; $('#tr-against').value = d.against;
+    $('#tr-balanced').value = d.balanced; $('#tr-after').value = d.after;
+    $$('input', trapBox).forEach(function (c) { c.checked = d.traps.indexOf(+c.value) > -1; });
+    $('#tr-summary').hidden = true; $('#tr-copied').textContent = '';
+    $('#trap-def').textContent = 'Select a trap to see what it means.';
+    syncRanges(); updateProgress();
+  }
+  function syncRanges() { $('#tr-before-o').textContent = $('#tr-before').value; $('#tr-after-o').textContent = $('#tr-after').value; }
+  function updateProgress() {
+    var done = 0;
+    ['tr-situation', 'tr-thought', 'tr-feel', 'tr-for', 'tr-balanced'].forEach(function (id) { if ($('#' + id).value.trim()) done++; });
+    var picked = $$('input:checked', trapBox).length > 0;
+    var total = 6;
+    // steps: situation, thought, feeling, evidence (for+against), traps, balanced
+    done = 0;
+    if ($('#tr-situation').value.trim()) done++;
+    if ($('#tr-thought').value.trim()) done++;
+    if ($('#tr-feel').value.trim()) done++;
+    if ($('#tr-for').value.trim() && $('#tr-against').value.trim()) done++;
+    if (picked) done++;
+    if ($('#tr-balanced').value.trim()) done++;
+    $('#tr-progress').textContent = done + ' of ' + total + ' steps filled in';
+  }
+  ['tr-situation', 'tr-thought', 'tr-feel', 'tr-for', 'tr-against', 'tr-balanced'].forEach(function (id) { $('#' + id).addEventListener('input', updateProgress); });
+  ['tr-before', 'tr-after'].forEach(function (id) { $('#' + id).addEventListener('input', syncRanges); });
+  $('#tr-example').addEventListener('click', function () { setForm(example); $('#tr-banner').hidden = false; });
+  $('#tr-clear').addEventListener('click', function () {
+    setForm({ situation: '', thought: '', feel: '', before: 50, forr: '', against: '', traps: [], balanced: '', after: 50 });
+    $('#tr-banner').hidden = true; $('#tr-situation').focus();
+  });
+  $('#tr-build').addEventListener('click', function () {
+    var picked = $$('input:checked', trapBox).map(function (c) { return traps[+c.value][0]; });
+    var b = +$('#tr-before').value, a = +$('#tr-after').value, d = b - a;
+    var feel = $('#tr-feel').value.trim() || 'Feeling';
+    var txt = 'THOUGHT RECORD\n\nSituation: ' + ($('#tr-situation').value.trim() || '(blank)') +
+      '\nAutomatic thought: ' + ($('#tr-thought').value.trim() || '(blank)') +
+      '\nFeeling: ' + feel + ' (' + b + '/100)' +
+      '\nEvidence for: ' + ($('#tr-for').value.trim() || '(blank)') +
+      '\nEvidence against: ' + ($('#tr-against').value.trim() || '(blank)') +
+      '\nThinking traps: ' + (picked.length ? picked.join(', ') : 'none selected') +
+      '\nBalanced thought: ' + ($('#tr-balanced').value.trim() || '(blank)') +
+      '\nFeeling after: ' + a + '/100';
+    $('#tr-out').value = txt;
+    $('#tr-shift').textContent = d > 0 ? feel + ' went from ' + b + ' to ' + a + ', a drop of ' + d + '. Notice what changed your view.'
+      : (d === 0 ? 'Your rating stayed at ' + a + '. The thought may need more evidence work, or a different angle. Try the Reframing tab.'
+      : 'Your rating rose from ' + b + ' to ' + a + '. That can happen. Check whether the balanced thought feels believable.');
+    $('#tr-summary').hidden = false; $('#tr-copied').textContent = '';
+    $('#tr-summary').scrollIntoView({ behavior: reduce ? 'auto' : 'smooth', block: 'nearest' });
+  });
+  function copyFrom(ta, note) {
+    function fallback() { ta.focus(); ta.select(); note.textContent = 'Select the text and copy it with your keyboard.'; }
+    try {
+      navigator.clipboard.writeText(ta.value).then(function () { note.textContent = 'Copied.'; }, fallback);
+    } catch (e) { fallback(); }
+  }
+  $('#tr-copy').addEventListener('click', function () { copyFrom($('#tr-out'), $('#tr-copied')); });
+  setForm(example);
+
+  /* ---------- reframing: practice cards ---------- */
+  var kinds = {
+    best: ['Balanced reframe', 'It admits the difficulty, stays accurate, and points to a next step.'],
+    forced: ['Forced positivity', 'It brushes the problem aside. It is hard to believe, so it will not hold up under stress.'],
+    trap: ['Same trap, new words', 'It keeps the same all-or-nothing or worst-case thinking.'],
+    avoid: ['Avoidance', 'It lowers worry for now by dropping the task. The problem stays.']
+  };
+  var scenarios = [
+    { t: 'I bombed that quiz. I am clearly not cut out for this major.', o: [
+      ['It is just one quiz, so it does not matter at all. I will stop thinking about it.', 'forced'],
+      ['This quiz showed me which topics I have not mastered yet. That is information I can use before the exam.', 'best'],
+      ['I always mess up. I should probably switch majors before it gets worse.', 'trap']] },
+    { t: 'Everyone in class understands this better than I do.', o: [
+      ['Everyone is probably just as confused, so there is no point studying.', 'avoid'],
+      ['They understand it better, so I must be the weakest one here.', 'trap'],
+      ['I cannot see what others are struggling with. I can ask for help or join a study group instead of guessing.', 'best']] },
+    { t: 'I have so much to do that I will never get it all done.', o: [
+      ['I can not do it all today. I can list it, pick the next three tasks, and start with the smallest.', 'best'],
+      ['Everything always works out, so I do not need a plan.', 'forced'],
+      ['If I cannot finish everything perfectly, there is no point starting.', 'trap']] },
+    { t: 'My professor\'s comments on my paper were harsh. She must think I am a bad writer.', o: [
+      ['Her feedback is worthless and she is just a mean grader.', 'trap'],
+      ['I will act like it does not bother me and not read the comments again.', 'avoid'],
+      ['The comments are about this draft, not about me. Specific feedback tells me exactly what to revise.', 'best']] },
+    { t: 'I am so anxious about my presentation that I am going to freeze.', o: [
+      ['I will not feel nervous at all. I am going to nail it.', 'forced'],
+      ['If my voice shakes, everyone will notice and judge me.', 'trap'],
+      ['I feel nervous, which is common before presenting. I can practice twice out loud and start with a slow breath.', 'best']] }
+  ];
+  var cur = 0, answers = {};
+  function renderCard() {
+    var sc = scenarios[cur], ans = answers[cur];
+    $('#rf-count').textContent = 'Scenario ' + (cur + 1) + ' of ' + scenarios.length;
+    $('#rf-thought').textContent = '"' + sc.t + '"';
+    var box = $('#rf-opts'); box.innerHTML = '';
+    sc.o.forEach(function (o, i) {
+      var b = document.createElement('button'); b.type = 'button'; b.className = 'opt';
+      var txt = document.createElement('span'); txt.textContent = o[0]; b.appendChild(txt);
+      if (ans !== undefined) {
+        b.disabled = true; b.classList.add(o[1] === 'best' ? 'best' : 'other'); if (ans === i) b.classList.add('picked');
+        var tag = document.createElement('span'); tag.className = 'tag'; tag.textContent = (ans === i ? 'Your pick: ' : '') + kinds[o[1]][0]; b.appendChild(tag);
+        var why = document.createElement('span'); why.className = 'why'; why.textContent = kinds[o[1]][1]; b.appendChild(why);
+      } else { b.addEventListener('click', function () { answers[cur] = i; renderCard(); }); }
+      box.appendChild(b);
+    });
+    var answered = Object.keys(answers).length, right = 0;
+    Object.keys(answers).forEach(function (k) { if (scenarios[k].o[answers[k]][1] === 'best') right++; });
+    $('#rf-score').textContent = answered ? right + ' balanced of ' + answered + ' answered' : '';
+    $('#rf-prev').disabled = cur === 0;
+    $('#rf-next').textContent = cur === scenarios.length - 1 ? 'Back to first' : 'Next scenario';
+  }
+  $('#rf-prev').addEventListener('click', function () { if (cur > 0) { cur--; renderCard(); } });
+  $('#rf-next').addEventListener('click', function () { cur = (cur + 1) % scenarios.length; renderCard(); });
+  renderCard();
+
+  /* ---------- reframing: own ---------- */
+  var lenses = [
+    ['Best friend', 'What would I say to a friend who had this exact thought?', 'If a friend told me this, I would say...'],
+    ['Time travel', 'How will this look in a week? In a year?', 'In a year, this will probably be...'],
+    ['Learning', 'What can this teach me or show me to work on?', 'What this shows me to work on is...'],
+    ['Control', 'What part can I influence, and what can I let go?', 'What I can control is... What I can let go of is...'],
+    ['Both and', 'What is true on both sides? Hard and doable. Disappointed and capable.', 'It is true that... and it is also true that...']
+  ];
+  var lensIdx = 0;
+  var seg = $('#lens-seg');
+  seg.innerHTML = lenses.map(function (l, i) { return '<button type="button" class="btn small' + (i === 0 ? ' primary' : '') + '" data-l="' + i + '" aria-pressed="' + (i === 0) + '">' + l[0] + '</button>'; }).join('');
+  function showLens() {
+    var l = lenses[lensIdx];
+    $$('button', seg).forEach(function (b) { var on = +b.getAttribute('data-l') === lensIdx; b.className = 'btn small' + (on ? ' primary' : ''); b.setAttribute('aria-pressed', on); });
+    $('#lens-box').innerHTML = '<b></b><span></span>';
+    $('#lens-box b').textContent = l[0] + ' lens'; $('#lens-box span').textContent = l[1];
+  }
+  $$('button', seg).forEach(function (b) { b.addEventListener('click', function () { lensIdx = +b.getAttribute('data-l'); showLens(); }); });
+  showLens();
+  $('#rf-starter').addEventListener('click', function () {
+    var ta = $('#rf-new'), s = lenses[lensIdx][2];
+    ta.value = ta.value ? ta.value + ' ' + s + ' ' : s + ' '; ta.focus();
+  });
+  var rfTmp = document.createElement('textarea'); rfTmp.style.cssText = 'position:fixed;left:-9999px;top:0;opacity:0';
+  document.body.appendChild(rfTmp);
+  $('#rf-copy').addEventListener('click', function () {
+    rfTmp.value = 'Stressful thought: ' + ($('#rf-own').value.trim() || '(blank)') + '\nLens: ' + lenses[lensIdx][0] + '\nMy reframe: ' + ($('#rf-new').value.trim() || '(blank)');
+    copyFrom(rfTmp, $('#rf-copied'));
+  });
+
+  /* ---------- grounding 5-4-3-2-1 ---------- */
+  var senses = [
+    [5, 'see', 'Look around slowly. Pick out five things, big or small. Notice colors, shapes, and light. Name each one quietly.'],
+    [4, 'feel', 'Notice the chair under you, your feet on the floor, your clothes on your skin, the temperature of the air.'],
+    [3, 'hear', 'Listen near and far: a fan, voices, traffic, your own breathing.'],
+    [2, 'smell', 'Notice any scent in the air or on your sleeve. If you cannot smell anything, name two smells you like.'],
+    [1, 'taste', 'Notice the taste in your mouth, or take a sip of water. Or name a taste you like.']
+  ];
+  var gi = -1, gn = 0;
+  function renderGround() {
+    var start = $('#g-start'), tap = $('#g-tap'), next = $('#g-next'), reset = $('#g-reset');
+    var dots = $('#g-dots'); dots.innerHTML = ''; $('#g-count').textContent = '';
+    if (gi < 0) {
+      $('#g-pill').textContent = 'Ready'; $('#g-num').textContent = '5'; $('#g-title').textContent = 'Name 5 things you can see';
+      $('#g-cue').textContent = 'Sit comfortably and take a slow breath. Press Start when you are ready.';
+      start.hidden = false; start.textContent = 'Start'; tap.hidden = true; next.hidden = true; reset.hidden = true;
+      checkins.ground.hide(); return;
+    }
+    start.hidden = true; reset.hidden = false;
+    if (gi < 5) {
+      var sn = senses[gi], c = sn[0];
+      $('#g-pill').textContent = 'Step ' + (gi + 1) + ' of 5'; $('#g-num').textContent = c;
+      $('#g-title').textContent = 'Name ' + c + (c === 1 ? ' thing' : ' things') + ' you can ' + sn[1];
+      $('#g-cue').textContent = sn[2];
+      for (var k = 0; k < c; k++) { var d = document.createElement('span'); if (k < gn) d.className = 'on'; dots.appendChild(d); }
+      $('#g-count').textContent = gn + ' of ' + c;
+      tap.hidden = gn >= c; next.hidden = gn < c;
+      next.textContent = gi < 4 ? 'Next: ' + senses[gi + 1][0] + ' you can ' + senses[gi + 1][1] : 'Finish with a breath';
+    } else if (gi === 5) {
+      $('#g-pill').textContent = 'Breathe'; $('#g-num').textContent = '\u2713'; $('#g-title').textContent = 'Take one slow breath';
+      $('#g-cue').textContent = 'Breathe in for 4, out for 6. Notice that you are here, in this room, right now.';
+      tap.hidden = true; next.hidden = false; next.textContent = 'I am done';
+    } else {
+      $('#g-pill').textContent = 'Complete'; $('#g-num').textContent = '\u2713'; $('#g-title').textContent = 'Well done';
+      $('#g-cue').textContent = 'Rate your tension below. You can use this practice anywhere, with no equipment.';
+      tap.hidden = true; next.hidden = true; start.hidden = false; start.textContent = 'Practice again'; reset.hidden = true;
+      checkins.ground.reveal();
+    }
+  }
+  $('#g-start').addEventListener('click', function () { gi = 0; gn = 0; checkins.ground.hide(); renderGround(); });
+  $('#g-tap').addEventListener('click', function () { gn++; renderGround(); });
+  $('#g-next').addEventListener('click', function () { gi++; gn = 0; renderGround(); });
+  $('#g-reset').addEventListener('click', function () { gi = -1; gn = 0; renderGround(); });
+  runners.push({ halt: function () { if (gi !== -1) { gi = -1; gn = 0; renderGround(); } } });
+  renderGround();
+
+  /* ---------- start ---------- */
+  var start = (location.hash || '').replace('#', '');
+  showTab(start && $('#p-' + start) ? start : 'breathe');
+  breathView.reset();
+  pmrView.reset();
+  scanView.reset();
+})();
+</script>
+
+</body></html>
